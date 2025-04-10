@@ -1,0 +1,30 @@
+#contact {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f1f5f9;
+    padding: 40px;
+    margin: 40px auto;
+    border-radius: 12px;
+    box-shadow: 10px 10px 25px rgba(0, 255, 204, 0.2);
+    max-width: 1000px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0, 255, 204, 0.3);
+}
+
+#contact h1 {
+    margin-bottom: 20px;
+}
+
+ul {
+    margin-left: 20px;
+    padding-left: 0;
+}
+
+ul li {
+    color: #f1f5f9;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
