@@ -2,7 +2,7 @@
 import React from "react";
 import HomePage from "./Components/HomePage";
 import Experience from './Components/Experience';
-import Contact from './Components/Contact';
+import ContactForm from "./Components/Contact";
 import Skills from "./Components/Skills";
 import Certificates from "./Components/Certificates";
 
@@ -14,7 +14,7 @@ function App() {
       <Skills />
       <Certificates />
       {/* Add more components as needed */}
-      <Contact />
+      <ContactForm />
     </div>
   );
 }

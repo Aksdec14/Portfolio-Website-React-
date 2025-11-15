@@ -1,18 +1,36 @@
-import React from 'react';
-import './ContactCSS.css'; // Assuming you have a CSS file for styling
-const Contact = () => {
-    return (
-        <section id="contact" data-aos="zoom-in" data-aos-delay="300">
-            <h1 data-aos="fade-up">📞 Contact</h1>
-            <p data-aos="fade-up"><strong data-aos="fade-up">Name:</strong> Akshat Shukla</p>
-            <p data-aos="fade-up"><strong data-aos="fade-up">Location:</strong> Noida, India</p>
-            <p data-aos="fade-up"><strong data-aos="fade-up">Phone:</strong> <a href="tel:+918376888676">+91 83768 88676</a></p>
-            <p data-aos="fade-up"><strong data-aos="fade-up">Email:</strong> <a href="mailto:aksdec14@gmail.com">aksdec14@gmail.com</a></p>
-            <p data-aos="fade-up"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/akshat-shukla-549746289" target="_blank" rel="noreferrer">
-                linkedin.com/in/akshat-shukla-549746289
-            </a></p>
-        </section>
-    );
-};
+import { useState } from 'react';
+import './ContactForm.css'; // 💡 Import external CSS
 
-export default Contact;
+export default function ContactForm() {
+  const [result, setResult] = useState("");
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+    formData.append("access_key", "72950771-8faf-444c-bb9d-960282db302f");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      event.target.reset();
+    } else {
+      setResult("Error");
+    }
+  };
+
+  return (
+    <form className="contact-form" onSubmit={onSubmit}>
+      <input className="form-input" type="text" name="name" placeholder="Your Name" required />
+      <input className="form-input" type="email" name="email" placeholder="Your Email" required />
+      <textarea className="form-textarea" name="message" placeholder="Your Message" required />
+      <button className="submit-btn" type="submit">Submit Form</button>
+      <span className="result-msg">{result}</span>
+    </form>
+  );
+}
