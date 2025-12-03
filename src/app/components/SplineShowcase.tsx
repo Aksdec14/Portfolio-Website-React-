@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Spline from "@splinetool/react-spline";
 
 export default function SplineShowcase() {
-  const [interactive, setInteractive] = useState(false);
+  const [interactive, setInteractive] = useState(true); // default true for mobile
 
   return (
     <section
@@ -25,9 +25,7 @@ export default function SplineShowcase() {
           <span className="font-semibold" style={{ color: "#96C2DB" }}>
             Spline
           </span>
-          , a powerful 3D design tool for real-time WebGL experiences. Integrated
-          directly into React to enhance visual engagement and provide modern,
-          immersive motion to web interfaces.
+          , a powerful 3D design tool for real-time WebGL experiences.
         </p>
 
         <ul className="space-y-3 text-base" style={{ color: "#4A5568" }}>
@@ -41,10 +39,7 @@ export default function SplineShowcase() {
           </li>
           <li className="flex items-start gap-2">
             <span className="text-[#96C2DB] font-bold mt-1">•</span>
-            Integrated via{" "}
-            <code className="bg-[#E5EDF1] px-2 py-1 rounded text-[#96C2DB]">
-              @splinetool/react-spline
-            </code>
+            Integrated via @splinetool/react-spline
           </li>
           <li className="flex items-start gap-2">
             <span className="text-[#96C2DB] font-bold mt-1">•</span>
@@ -53,11 +48,12 @@ export default function SplineShowcase() {
         </ul>
       </div>
 
-      {/* RIGHT SIDE — SPLINE SCENE */}
+      {/* SPLINE */}
       <div
         className="w-full lg:w-1/2 h-[350px] sm:h-[450px] md:h-[550px] lg:h-[600px] rounded-xl overflow-hidden shadow-2xl border border-[#96C2DB] bg-[#E5EDF1]"
         onMouseEnter={() => setInteractive(true)}
         onMouseLeave={() => setInteractive(false)}
+        onTouchStart={() => setInteractive(true)}
       >
         <div className={`${interactive ? "" : "pointer-events-none"} w-full h-full`}>
           <Spline scene="https://prod.spline.design/7e71UQGg0YsfbZ5P/scene.splinecode" />
